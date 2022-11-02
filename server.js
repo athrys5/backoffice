@@ -4,6 +4,7 @@ const expressLayouts = require('express-ejs-layouts')
 const InitiateMongoServer = require("./config/db")
 const loginRouter = require('./routes/index')
 const pagesRouter = require('./routes/pages')
+const prodRouter = require('./routes/product')
 const path = require('path')
 InitiateMongoServer()
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
@@ -17,6 +18,7 @@ app.set('layout', 'layouts/layout')
 
 app.use(expressLayouts) //library for common layout
 
+app.use('/', prodRouter)
 app.use('/', pagesRouter)
 app.use('/', loginRouter)
 

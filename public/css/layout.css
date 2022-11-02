@@ -1,6 +1,5 @@
 body{
     background-color: #212529;
-    font-family: 'Courier New', monospace;
 }
 
 .container{
@@ -23,7 +22,6 @@ body{
     background-color: #3A4A4D;
     color: white;
     padding: 8px;
-    padding-bottom: 4px !important;
     margin-top: 8px;
     margin-left: 8px;
     border-radius: 1.5rem;
@@ -38,7 +36,6 @@ body{
     background-color: #3A4A4D;
     color: white;
     padding: 8px;
-    padding-bottom: 4px !important;
     margin-top: 8px;
     margin-left: 8px;
     border-radius: 1.5rem;

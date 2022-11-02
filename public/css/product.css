@@ -1,0 +1,51 @@
+.container-fluid{
+    margin-top: 50px;
+}
+
+.first{
+    background-color: #fff;
+    color: #333333;
+    border-radius: 3px;
+    border: 0;
+    margin-left: 20px;
+    padding: 8px;
+}
+
+.second{
+    background-color: #fff;
+    color: #333333;
+    border-radius: 3px;
+    border: 0;
+    margin-right: 8px;
+    margin-left: 8px;
+    padding: 8px;
+}
+
+.third{
+    background-color: #fff;
+    color: #333333;
+    border-radius: 3px;
+    border: 0;
+    margin-right: 20px;
+    padding: 8px;
+}
+
+
+.title{
+    text-align: center;
+}
+
+.field{
+    margin-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.form-label{
+    margin-bottom: 0px;
+}
+
+.btn{
+    font-weight: 550;
+    width: 100%;
+}

@@ -149,17 +149,6 @@ router.post('/login', async (req, res) =>{
     }
 })
 
-router.get('/post', function (req, res) {
-    let posts = Post.find({email: 'w@w', password: 'w'}, function(err, posts){
-        if(err){
-            console.log(err);
-        }
-        else {
-            res.json(posts);
-        }
-    });
-});
-
 router.delete('/logout', (req, res) => {
     req.logOut(function(err) {
         if (err) { return next(err); }

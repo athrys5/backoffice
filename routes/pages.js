@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/products', (req, res) =>{
-    res.render('products.ejs')
+router.get('/product', (req, res) =>{
+    res.render('product.ejs')
 })
 
 module.exports = router
