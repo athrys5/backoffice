@@ -1,78 +1,80 @@
 <link rel="stylesheet" type="text/css" href="css/product.css" />
-<script type="text/javascript" src="js/product.js"></script>
 <div class="container-fluid">
     <div class="row">
-        <div class="card first col">
-            <form action="/food" method="POST">
+        <div class="card first col" id="first">
+            <form action="/food" method="POST" autocomplete="off">
                 <h5 class="title">Food Product</h5>
                 <div class="field">
                     <label for="Name" class="form-label">Name</label>
-                    <input type="text" id="Name" name="Name" class="form-control" required>
+                    <input type="text" id="Name" name="Name" class="form-control first" required>
                 </div>
                 <div class="field">
                     <label for="Price" class="form-label">Price</label>
-                    <input type="number" id="Price" name="Price" class="form-control" required>
+                    <input type="number" id="Price" name="Price" class="form-control first" required>
                 </div>
                 <div class="field">
                     <label for="Quantity" class="form-label">Quantity</label>
-                    <input type="number" id="Quantity" name="Quantity" class="form-control" required>
+                    <input type="number" id="Quantity" name="Quantity" class="form-control first" required>
                 </div>
                 <div class="field">
                     <label for="Slug" class="form-label">Slug</label>
-                    <input type="text" id="Slug" name="Slug" class="form-control" required>
+                    <input type="text" id="Slug" name="Slug" class="form-control first" required>
                 </div>
                 <div class="field">
-                    <button type="submit" class="btn btn-primary">Insert</button>
+                    <button type="submit" class="btn btn-primary first">Insert</button>
                 </div>
             </form>
         </div>
-        <div class="card second col">
-            <form action="/product" method="POST">
+        <div class="card second col" id="second">
+            <form action="/accessory" method="POST" autocomplete="off">
                 <h5 class="title">Accessory Product</h5>
                 <div class="field">
                     <label for="Name" class="form-label">Name</label>
-                    <input type="text" id="Name" name="Name" class="form-control" required>
+                    <input type="text" id="Name" name="Name" class="form-control second" required>
                 </div>
                 <div class="field">
                     <label for="Price" class="form-label">Price</label>
-                    <input type="number" id="Price" name="Price" class="form-control" required>
+                    <input type="number" id="Price" name="Price" class="form-control second" required>
                 </div>
                 <div class="field">
                     <label for="Quantity" class="form-label">Quantity</label>
-                    <input type="number" id="Quantity" name="Quantity" class="form-control" required>
+                    <input type="number" id="Quantity" name="Quantity" class="form-control second" required>
                 </div>
                 <div class="field">
                     <label for="Slug" class="form-label">Slug</label>
-                    <input type="text" id="Slug" name="Slug" class="form-control" required>
+                    <input type="text" id="Slug" name="Slug" class="form-control second" required>
                 </div>
                 <div class="field">
-                    <button type="submit" class="btn btn-primary" disabled>Insert</button>
+                    <button type="submit" class="btn btn-primary second">Insert</button>
                 </div>
             </form>
         </div>
-        <div class="card third col">
-            <form action="/product" method="POST">
+        <div class="card third col" id="third" >
+            <form action="/health" method="POST" autocomplete="off">
                 <h5 class="title">Health Product </h5>
                 <div class="field">
                     <label for="Name" class="form-label">Name</label>
-                    <input type="text" id="Name" name="Name" class="form-control" required>
+                    <input type="text" id="Name" name="Name" class="form-control third" required>
                 </div>
                 <div class="field">
                     <label for="Price" class="form-label">Price</label>
-                    <input type="number" id="Price" name="Price" class="form-control" required>
+                    <input type="number" id="Price" name="Price" class="form-control third" required>
                 </div>
                 <div class="field">
                     <label for="Quantity" class="form-label">Quantity</label>
-                    <input type="number" id="Quantity" name="Quantity" class="form-control" required>
+                    <input type="number" id="Quantity" name="Quantity" class="form-control third" required>
                 </div>
                 <div class="field">
                     <label for="Slug" class="form-label">Slug</label>
-                    <input type="text" id="Slug" name="Slug" class="form-control" required>
+                    <input type="text" id="Slug" name="Slug" class="form-control third" required>
                 </div>
                 <div class="field">
-                    <button type="submit" class="btn btn-primary" disabled>Insert</button>
+                    <button type="submit" class="btn btn-primary third">Insert</button>
                 </div>
             </form>
         </div>
-    </div>  
+    </div> 
+    <span class="deletelink">Click here to DELETE items.</span>
 </div>
+
+<script type="text/javascript" src="js/product.js"></script>

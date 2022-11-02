@@ -20,4 +20,4 @@ let postSchema = mongoose.Schema({
     
 }, { versionKey: false });
   
-module.exports = mongoose.model('food', postSchema);
+module.exports = mongoose.model('accessory', postSchema);
