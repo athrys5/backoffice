@@ -1,6 +1,14 @@
 <link rel="stylesheet" type="text/css" href="css/product.css" />
 <div class="container-fluid">
     <div class="row">
+        <div class="col-sm insertDiv">
+            <button class="insertProds">Insert Products</button>
+        </div>
+        <div class="col-sm deleteDiv">
+            <button class="deleteProds" disabled>Delete Products</button>
+        </div>
+      </div>
+    <div class="row">
         <div class="card first col" id="first">
             <form action="/food" method="POST" autocomplete="off">
                 <h5 class="title">Food Product</h5>
@@ -74,7 +82,6 @@
             </form>
         </div>
     </div> 
-    <span class="deletelink">Click here to DELETE items.</span>
 </div>
 
 <script type="text/javascript" src="js/product.js"></script>

@@ -1,5 +1,51 @@
 .container-fluid{
+    margin: 0;
+    padding: 0;
     margin-top: 50px;
+}
+
+.row{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.insertDiv{
+    padding-left: 20px;
+}
+
+.deleteDiv{
+    padding-right: 20px;
+}
+
+.insertProds{
+    width: 100%;
+    background-color: #0b9f00;
+    height: 60px;
+    color: white;
+    font-size: 26px;
+    font-weight: 600px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.insertProds:hover{
+    background-color: #1db812;
+}
+
+.deleteProds{
+    width: 100%;
+    background-color: #d81d00;
+    height: 60px;
+    color: white;
+    font-size: 26px;
+    font-weight: 600px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.deleteProds:hover{
+    background-color: #f72606;
 }
 
 #first{

@@ -1,6 +1,9 @@
 const first = document.querySelector('#first')
 const second = document.querySelector('#second')
 const third = document.querySelector('#third') 
+const insertbtn = document.querySelector('.insertProds')
+const deletebtn = document.querySelector('.deleteProds')
+
 
 first.addEventListener('click', () => {
     const c = document.getElementsByClassName('first')
