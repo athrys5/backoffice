@@ -28,6 +28,33 @@ router.post('/health', async (req, res) => {
   } catch { console.error() }
   })
 
+
+router.post('/deletefood', async (req, res) => {
+  try{
+    await food.deleteMany({slug: req.body.Slug})
+    res.redirect('/product')
+  }catch{
+    console.error()
+  }
+})
+
+router.post('/deleteaccessory', async (req, res) => {
+  try{
+    await accessory.deleteMany({slug: req.body.Slug})
+    res.redirect('/product')
+  }catch{
+    console.error()
+  }
+})
+
+router.post('/deletehealth', async (req, res) => {
+  try{
+    await health.deleteMany({slug: req.body.Slug})
+    res.redirect('/product')
+  }catch{
+    console.error()
+  }
+})
 /*app.post("/dogs", async (req, res) => {
     
   });

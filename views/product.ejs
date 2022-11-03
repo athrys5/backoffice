@@ -1,13 +1,16 @@
 <link rel="stylesheet" type="text/css" href="css/product.css" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm insertDiv">
-            <button class="insertProds">Insert Products</button>
+        <div class="col-8 insertDiv" id="insertDiv">
+            <button class="insertProds">Insert</button>
         </div>
-        <div class="col-sm deleteDiv">
-            <button class="deleteProds">Delete Products</button>
+        <div class="col-2 deleteDiv" id="deleteDiv">
+            <button class="deleteProds">Delete</button>
         </div>
-      </div>
+        <div class="col-2 modifyDiv" id="modifyDiv">
+            <button class="modifyProds">Modify</button>
+        </div>
+    </div>
     <div class="row" id="insertCards">
         <div class="card first col" id="first">
             <form action="/food" method="POST" autocomplete="off">
@@ -81,7 +84,119 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="row" id="deleteCards">
+        <div class="card first col" id="first">
+            <form action="/deletefood" method="POST" autocomplete="off">
+                <h5 class="title">Food Product</h5>
+                <div class="field">
+                    <label for="Slug" class="form-label">Slug</label>
+                    <input type="text" id="Slug" name="Slug" class="form-control first" required>
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn btn-primary first">Delete</button>
+                </div>
+            </form>
+        </div>
+        <div class="card second col" id="second">
+            <form action="/deleteaccessory" method="POST" autocomplete="off">
+                <h5 class="title">Accessory Product</h5>
+                <div class="field">
+                    <label for="Slug" class="form-label">Slug</label>
+                    <input type="text" id="Slug" name="Slug" class="form-control second" required>
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn btn-primary second">Delete</button>
+                </div>
+            </form>
+        </div>
+        <div class="card third col" id="third" >
+            <form action="/deletehealth" method="POST" autocomplete="off">
+                <h5 class="title">Health Product </h5>
+                <div class="field">
+                    <label for="Slug" class="form-label">Slug</label>
+                    <input type="text" id="Slug" name="Slug" class="form-control third" required>
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn btn-primary third">Delete</button>
+                </div>
+            </form>
+        </div>
     </div> 
+    <div class="row" id="modifyCards">
+        <div class="card first col" id="first">
+            <form action="/modifyfood" method="POST" autocomplete="off">
+                <h5 class="title">Food Product</h5>
+                <div class="field">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" id="Name" name="Name" class="form-control first" required>
+                </div>
+                <div class="field">
+                    <label for="Price" class="form-label">Price</label>
+                    <input type="number" id="Price" name="Price" class="form-control first" required>
+                </div>
+                <div class="field">
+                    <label for="Quantity" class="form-label">Quantity</label>
+                    <input type="number" id="Quantity" name="Quantity" class="form-control first" required>
+                </div>
+                <div class="field">
+                    <label for="Slug" class="form-label">Slug</label>
+                    <input type="text" id="Slug" name="Slug" class="form-control first" required>
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn btn-primary first">Modify</button>
+                </div>
+            </form>
+        </div>
+        <div class="card second col" id="second">
+            <form action="/modifyaccessory" method="POST" autocomplete="off">
+                <h5 class="title">Accessory Product</h5>
+                <div class="field">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" id="Name" name="Name" class="form-control second" required>
+                </div>
+                <div class="field">
+                    <label for="Price" class="form-label">Price</label>
+                    <input type="number" id="Price" name="Price" class="form-control second" required>
+                </div>
+                <div class="field">
+                    <label for="Quantity" class="form-label">Quantity</label>
+                    <input type="number" id="Quantity" name="Quantity" class="form-control second" required>
+                </div>
+                <div class="field">
+                    <label for="Slug" class="form-label">Slug</label>
+                    <input type="text" id="Slug" name="Slug" class="form-control second" required>
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn btn-primary second">Modify</button>
+                </div>
+            </form>
+        </div>
+        <div class="card third col" id="third" >
+            <form action="/modifyhealth" method="POST" autocomplete="off">
+                <h5 class="title">Health Product </h5>
+                <div class="field">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" id="Name" name="Name" class="form-control third" required>
+                </div>
+                <div class="field">
+                    <label for="Price" class="form-label">Price</label>
+                    <input type="number" id="Price" name="Price" class="form-control third" required>
+                </div>
+                <div class="field">
+                    <label for="Quantity" class="form-label">Quantity</label>
+                    <input type="number" id="Quantity" name="Quantity" class="form-control third" required>
+                </div>
+                <div class="field">
+                    <label for="Slug" class="form-label">Slug</label>
+                    <input type="text" id="Slug" name="Slug" class="form-control third" required>
+                </div>
+                <div class="field">
+                    <button type="submit" class="btn btn-primary third">Modify</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript" src="js/product.js"></script>

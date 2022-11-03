@@ -11,31 +11,47 @@
 }
 
 .insertDiv{
+    padding-top: 0px;
+    padding-bottom: 10px;
     padding-left: 20px;
+    padding-right: 4px;
+    margin: 0;
 }
 
 .deleteDiv{
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin: 0;
+}
+
+.modifyDiv{
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 4px;
     padding-right: 20px;
+    margin: 0;
 }
 
 .insertProds{
     width: 100%;
-    background-color: #0b9f00;
+    background-color: #d7d7d7;
+    color: #28272c;
     height: 60px;
-    color: white;
     font-size: 26px;
     font-weight: 600px;
     border: 0;
     border-radius: 8px;
 }
 
-.insertProds:hover{
-    background-color: #1db812;
+.insertProds:active{
+    transform: translate(1px, 1px);
 }
 
 .deleteProds{
     width: 100%;
-    background-color: #d81d00;
+    background-color: #28de62;  /*#d81d00;*/
     height: 60px;
     color: white;
     font-size: 26px;
@@ -44,8 +60,31 @@
     border-radius: 8px;
 }
 
-.deleteProds:hover{
-    background-color: #f72606;
+.deleteProds:active{
+    transform: translate(1px, 1px);
+}
+
+.modifyProds{
+    width: 100%;
+    background-color: #28de62;
+    height: 60px;
+    color: white;
+    font-size: 26px;
+    font-weight: 600px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.modifyProds:active{
+    transform: translate(1px, 1px);
+}
+
+#deleteCards{
+    display: none;
+}
+
+#modifyCards{
+    display: none;
 }
 
 #first{
