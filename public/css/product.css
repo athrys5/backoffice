@@ -49,17 +49,19 @@
 }
 
 #first{
-    background-color: #fff;
+    background-color: #FbFDFD;
     color: #333333;
     border-radius: 3px;
     border: 0;
     margin-left: 20px;
     padding: 8px;
     cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 0.2px 0.2px 1px #525151;
 }
 
 #second{
-    background-color: #fff;
+    background-color: #FbFDFD;
     color: #333333;
     border-radius: 3px;
     border: 0;
@@ -67,16 +69,20 @@
     margin-left: 8px;
     padding: 8px;
     cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 0.2px 0.2px 1px #525151;
 }
 
 #third{
-    background-color: #fff;
+    background-color: #FbFDFD;
     color: #333333;
     border-radius: 3px;
     border: 0;
     margin-right: 20px;
     padding: 8px;
     cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 0.2px 0.2px 1px #525151;
 }
 
 

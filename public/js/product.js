@@ -34,3 +34,11 @@ third.addEventListener('click', () => {
     for(let i = 1; i < b.length; i++){ b[i].setAttribute('disabled', ''); }
         
 });
+
+deletebtn.addEventListener('click', () => {
+    document.getElementById('insertCards').style.display = "none";
+})
+
+insertbtn.addEventListener('click', () => {
+    document.getElementById('insertCards').style.display = "";
+})

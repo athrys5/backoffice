@@ -1,61 +1,59 @@
 body{
-    background-color: #212529;
+    background-color: #fff;
+    color: #303634;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 .container{
-    background-color: #3A4A4D;
+    background-color: #f8f8f8;
     position: absolute;
     width: 300px;
     height: 100%;
-    color:white;
     margin: 0;
     z-index: 9999;
     display: none;
     box-sizing: border-box;
-    box-shadow: 4px 4px 10px #131618;
+    box-shadow: 1px 1px 4px #303634;
     padding: 0;
 }
 
 .btn1{
     text-decoration: none;
     border: none;
-    background-color: #3A4A4D;
+    background-color: #01c33e;
     color: white;
     padding: 8px;
     margin-top: 8px;
     margin-left: 8px;
-    border-radius: 1.5rem;
-    width: 60px;
+    border-radius: 8px;
+    width: 50px;
     box-sizing: border-box;
-    box-shadow: 4px 4px 10px #131618;
 }
 
 .btn2{
     text-decoration: none;
     border: none;
-    background-color: #3A4A4D;
+    background-color: #01c33e;
     color: white;
     padding: 8px;
     margin-top: 8px;
     margin-left: 8px;
-    border-radius: 1.5rem;
-    width: 60px;
+    border-radius: 8px;
+    width: 50px;
     margin-left: 320px;
     box-sizing: border-box;
-    box-shadow: 4px 4px 10px #131618;
 }
 
 .btn3{
     text-decoration: none;
     border: none;
-    background-color: #131618;
+    background-color: #01c33e;
     color: white;
     padding: 8px;
     margin-bottom: 0;
-    border-radius: 1.5rem;
+    border-radius: 8px;
     width: 100px;
     box-sizing: border-box;
-    box-shadow: 4px 4px 10px #131618;
 }
 
 .header {
@@ -76,11 +74,9 @@ body{
  }
 
 .links{
-    color:white;
     list-style: none;
     padding: 4px;
-    padding-left: 8px;
-    margin-left: 8px;
+    margin: 0;
 }
 
 .links li{
@@ -90,15 +86,17 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-weight: 0;
 }
 
 .links li:hover{
-    background-color: #131618;
+    background-color: #01c33e;
+    color: white;
 }
 
 .links a{
     text-decoration: none;
-    color: white;
+    color: #131618;
 }
 
 hr{
