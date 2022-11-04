@@ -23,8 +23,6 @@ router.post('/canceldesc', async(req, res) => {
 
 router.post('/modifydesc', async(req, res) => {
     try{
-        console.log(req.body.text)
-        console.log(req.body.modify)
         const filter = {testo: req.body.text}
         const options = { upsert: false };
         const updateDoc = {
