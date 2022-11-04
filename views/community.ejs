@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="css/community.css" />
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <% for(var i = 0; i < data.length; i++) {%>
+        <div class="card col-3">
+          <p>
+            <%= "User: " + data[i].email %>
+            <% if(data[i].vip){ %>
+              <span>Vip</span> 
+            <%} %>
+            <i class="fa-solid fa-circle-xmark myBtn"></i>
+          </p>
+          <p>
+            <%= " Text: " +data[i].testo%>
+            <i class="fa-solid fa-pencil myDesc"></i>
+          </p>
+          <p>
+            <%= data[i].date %>
+          </p>
+          <div class="modal myModal">
+            <form action="" method="POST" class="myForm" autocomplete="off">
+              <div class="modal-content">
+                <label for="text">Description</label>
+                <input type="text" name="text" id="text" class="form-control deletetext" value="<%= data[i].testo %>" readonly>
+                <label for="modify" class="label">Modify text here</label>
+                <input type="text" name="modify" id="modify" class="form-control modifytext" value="<%= data[i].testo %>">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary close">Close</button>
+                  <button type="submit" class="btn btn-danger deletebutton" id="delete">Delete</button>
+                  <button type="submit" class="btn btn-warning modifybutton" id="modify">Modify</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      <% } %>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/community.js"></script>
