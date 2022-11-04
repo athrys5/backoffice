@@ -55,15 +55,68 @@ router.post('/deletehealth', async (req, res) => {
     console.error()
   }
 })
-/*app.post("/dogs", async (req, res) => {
-    
-  });
-  
-  app.put("/dogs/:id", async (req, res) => {
-    const { id } = req.params;
-    await Dog.updateOne({ id }, req.body);
-    const updatedDog = await Dog.findById(id);
-    return res.status(200).json(updatedDog);
-  });*/
+
+router.post('/modifyfood', async (req, res) => {
+  try{
+    const filter = {slug: req.body.Slug}
+    const options = { upsert: false };
+    const updateDoc = {
+      $set: {
+        name: req.body.Name, 
+        price: req.body.Price, 
+        quantity: req.body.Quantity
+      },
+    };
+    const result = await food.updateMany(filter, updateDoc, options)
+    console.log(
+      `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+    );
+    res.redirect('/product')
+  }catch{
+    console.error()
+  }
+})
+
+router.post('/modifyaccessory', async (req, res) => {
+  try{
+    const filter = {slug: req.body.Slug}
+    const options = { upsert: false };
+    const updateDoc = {
+      $set: {
+        name: req.body.Name, 
+        price: req.body.Price, 
+        quantity: req.body.Quantity
+      },
+    };
+    const result = await accessory.updateMany(filter, updateDoc, options)
+    console.log(
+      `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+    );
+    res.redirect('/product')
+  }catch{
+    console.error()
+  }
+})
+
+router.post('/modifyhealth', async (req, res) => {
+  try{
+    const filter = {slug: req.body.Slug}
+    const options = { upsert: false };
+    const updateDoc = {
+      $set: {
+        name: req.body.Name, 
+        price: req.body.Price, 
+        quantity: req.body.Quantity
+      },
+    };
+    const result = await health.updateMany(filter, updateDoc, options)
+    console.log(
+      `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+    );
+    res.redirect('/product')
+  }catch{
+    console.error()
+  }
+})
 
 module.exports = router
