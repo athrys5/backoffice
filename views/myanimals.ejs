@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="css/myanimals.css" />
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <% for(var i = 0; i < data.length; i++) {%>
+        <div class="card col-3">
+            <p>
+                <%= " Email: " + data[i].email %>
+                <i class="fa-solid fa-circle-xmark myBtn"></i>
+              </p>
+          <p>
+            <%= " Name: " + data[i].name %>
+          </p>
+          <p>
+            <%= " Gender: " +data[i].gender%>
+            <i class="fa-solid fa-pencil myDesc"></i>
+          </p>
+          <p>
+            <%= " Breed: " +data[i].breed%>
+          </p>
+          <p>
+            <%= " Height: " +data[i].height%>
+          </p>
+          <p>
+            <%= " Length: " +data[i].length%>
+          </p>
+          <p>
+            <%= " Age: " +data[i].age%>
+          </p>
+          <div class="modal myModal">
+            <form action="/deleteanimal" method="POST" class="myForm" autocomplete="off">
+              <div class="modal-content">
+                <span>Do you want to delete this Animal?</span>
+                <input type="text" name="text" id="text" class="form-control deletetext" value="<%= data[i].name %>" readonly>
+                <label for="modify" class="label">Modify text here</label>
+                <input type="text" name="modify" id="modify" class="form-control modifytext" value="<%= data[i].testo %>">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary close">Close</button>
+                  <button type="submit" class="btn btn-danger deletebutton" id="delete">Delete</button>
+                  <button type="submit" class="btn btn-warning modifybutton" id="modify">Modify</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      <% } %>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/myanimals.js"></script>

@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="css/leaderboard.css" />
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <% for(var i = 0; i < data.length; i++) {%>
+        <div class="card col-3">
+            <p>
+                <%= " Email: " + data[i].email %>
+                <i class="fa-solid fa-circle-xmark myBtn"></i>
+              </p>
+          <p>
+            <%= " Name: " + data[i].name %>
+          </p>
+          <p>
+            <%= " Location: " +data[i].location%>
+            <i class="fa-solid fa-pencil myDesc"></i>
+          </p>
+          <p>
+            <%= " Score: " +data[i].score%>
+          </p>
+          <p>
+            <%= " Date: " +data[i].dt%>
+          </p>
+        </div>
+      <% } %>
+    </div>
+</div>

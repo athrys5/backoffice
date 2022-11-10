@@ -20,5 +20,5 @@ let postSchema = mongoose.Schema({
     
 }, 
 { versionKey: false });
-
-let description = module.exports = mongoose.model('description', postSchema);
+mongoose.pluralize(null);
+let description = module.exports = mongoose.model('descrizioni', postSchema);
