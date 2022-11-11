@@ -32,4 +32,4 @@ let postSchema = mongoose.Schema({
 },
 { versionKey: false });
 mongoose.pluralize(null);
-module.exports = mongoose.model('Animal', postSchema);
+let Animal = module.exports = mongoose.model('Animal', postSchema);

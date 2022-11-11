@@ -20,4 +20,4 @@ let postSchema = mongoose.Schema({
     
 }, { versionKey: false });
 mongoose.pluralize(null);
-module.exports = mongoose.model('ProdSanitari', postSchema);
+let ProdSanitari = module.exports = mongoose.model('ProdSanitari', postSchema);

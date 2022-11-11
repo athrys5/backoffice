@@ -20,4 +20,4 @@ let postSchema = mongoose.Schema({
     
 }, { versionKey: false });
 mongoose.pluralize(null);
-module.exports = mongoose.model('Cibo', postSchema);
+let Cibo = module.exports = mongoose.model('Cibo', postSchema);

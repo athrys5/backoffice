@@ -20,4 +20,5 @@ let postSchema = mongoose.Schema({
     
 }, { versionKey: false });
 mongoose.pluralize(null);
-module.exports = mongoose.model('Accessori', postSchema);
+
+let Accessori = module.exports = mongoose.model('Accessori', postSchema);

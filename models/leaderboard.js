@@ -26,4 +26,4 @@ let postSchema = mongoose.Schema({
 },
 { versionKey: false });
 mongoose.pluralize(null);
-module.exports = mongoose.model('Punteggi', postSchema);
+let Punteggi = module.exports = mongoose.model('Punteggi', postSchema);

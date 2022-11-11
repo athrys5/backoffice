@@ -40,4 +40,4 @@ let postSchema = mongoose.Schema({
 },
 { versionKey: false });
 mongoose.pluralize(null);
-module.exports = mongoose.model('Users', postSchema);
+let Users = module.exports = mongoose.model('Users', postSchema);
