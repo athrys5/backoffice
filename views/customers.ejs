@@ -5,12 +5,13 @@
       <% for(var i = 0; i < data.length; i++) {%>
         <div class="card col-3">
           <p>
-            <%= "Email: " + data[i].email %>
             <i class="fa-solid fa-circle-xmark myBtn"></i>
           </p>
           <p>
-            <%= " Password: " +data[i].password%>
-            <i class="fa-solid fa-pencil myDesc"></i>
+            <%= "Email: " + data[i].email %>
+          </p>
+          <p>
+            <%= " Password: " +data[i].password%>  
           </p>
           <p>
             <%= " User id: " +data[i].userid%>
@@ -31,15 +32,28 @@
             <%= " Address: " +data[i].address%>
           </p>
           <% if(data[i].vip){ %>
-            <span>Vip</span> 
+            <span>Vip: True</span> 
+          <%}else{%>
+            <span>Vip: False</span> 
           <%} %>
+          <p>
+            <i class="fa-solid fa-pencil myDesc"></i>
+          </p>
           <div class="modal myModal">
-            <form action="/deleteuser" method="POST" class="myForm" autocomplete="off">
+            <form action="" method="POST" class="myForm" autocomplete="off">
               <div class="modal-content">
-                <span>Do you want to delete this User?</span>
                 <input type="text" name="text" id="text" class="form-control deletetext" value="<%= data[i].email %>" readonly>
-                <label for="modify" class="label">Modify text here</label>
-                <input type="text" name="modify" id="modify" class="form-control modifytext" value="<%= data[i].testo %>">
+                <div id="modifydiv">
+                  <input type="text" name="email" id="email" class="form-control modifytext" value="<%= data[i].email %>">
+                  <input type="text" name="password" id="password" class="form-control modifytext" value="<%= data[i].password %>">
+                  <input type="text" name="userid" id="userid" class="form-control modifytext" value="<%= data[i].userid %>">
+                  <input type="text" name="firstname" id="firstname" class="form-control modifytext" value="<%= data[i].firstname %>">
+                  <input type="text" name="secondname" id="secondname" class="form-control modifytext" value="<%= data[i].secondname %>">
+                  <input type="text" name="city" id="city" class="form-control modifytext" value="<%= data[i].city %>">
+                  <input type="text" name="state" id="state" class="form-control modifytext" value="<%= data[i].state %>">
+                  <input type="text" name="address" id="address" class="form-control modifytext" value="<%= data[i].address %>">
+                  <input type="text" name="vip" id="vip" class="form-control modifytext" value="<%= data[i].vip %>">
+                </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary close">Close</button>
                   <button type="submit" class="btn btn-danger deletebutton" id="delete">Delete</button>

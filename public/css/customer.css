@@ -72,9 +72,13 @@ hr{
 
 .deletetext{
     margin-bottom: 8px;
+    display: none;
 }
 
 .modifytext{
     margin-bottom: 8px;
+}
+
+#modifydiv{
     display: none;
 }

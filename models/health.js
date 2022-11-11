@@ -19,5 +19,5 @@ let postSchema = mongoose.Schema({
     },
     
 }, { versionKey: false });
-  
-module.exports = mongoose.model('health', postSchema);
+mongoose.pluralize(null);
+module.exports = mongoose.model('ProdSanitari', postSchema);

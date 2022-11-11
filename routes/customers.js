@@ -19,4 +19,32 @@ router.post('/deleteuser', async (req,res) =>{
     } catch  { }
 })
 
+router.post('/modifyuser', async(req, res) => {
+    try{
+        const filter = {email: req.body.email}
+        console.log(filter)
+        const options = { upsert: false };
+        const updateDoc = {
+            $set: {
+                email: req.body.email,
+                password: req.body.password,
+                userid: req.body.userid,
+                firstname: req.body.firstname,
+                secondname: req.body.secondname,
+                city: req.body.city,
+                state: req.body.state,
+                address: req.body.address,
+                vip: req.body.vip
+            },
+        };
+        console.log(updateDoc)
+        await Users.updateMany(filter, updateDoc, options)
+        res.redirect('/customers')
+      }catch{
+        res.redirect('/error')
+        console.error()
+      }
+})
+
+
 module.exports = router

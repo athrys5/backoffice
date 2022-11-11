@@ -10,5 +10,5 @@ let postSchema = mongoose.Schema({
       required: true
     },
 });
-  
+mongoose.pluralize(null);
 let Post = module.exports = mongoose.model('Post', postSchema);

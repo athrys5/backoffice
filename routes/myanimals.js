@@ -12,11 +12,37 @@ router.get('/myanimals', async (req, res) =>{
     }catch{ }
 })
 
-router.post('/deleteanimal', async (req,res) =>{
+router.post('/deletepet', async (req,res) =>{
     try {
-        await Animals.deleteMany({ name: req.body.text})
+        await Animals.deleteMany({ email: req.body.email1 , name: req.body.name1})
         res.redirect('/myanimals')
     } catch  { }
 })
+
+router.post('/modifypet', async(req, res) => {
+    try{
+        const filter = {email: req.body.email2 , name: req.body.name2}
+        console.log(filter)
+        const options = { upsert: false };
+        const updateDoc = {
+            $set: {
+                email: req.body.email2,
+                name: req.body.name2,
+                gender: req.body.gender,
+                breed: req.body.breed,
+                height: req.body.height,
+                length: req.body.length,
+                age: req.body.age
+            },
+        };
+        console.log(updateDoc)
+        await Animals.updateMany(filter, updateDoc, options)
+        res.redirect('/myanimals')
+      }catch{
+        res.redirect('/error')
+        console.error()
+      }
+})
+
 
 module.exports = router

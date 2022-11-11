@@ -76,5 +76,12 @@ hr{
 
 .modifytext{
     margin-bottom: 8px;
+}
+
+.modifydiv{
+    display: none;
+}
+
+.divdelete{
     display: none;
 }

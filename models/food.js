@@ -19,5 +19,5 @@ let postSchema = mongoose.Schema({
     },
     
 }, { versionKey: false });
-  
-module.exports = mongoose.model('food', postSchema);
+mongoose.pluralize(null);
+module.exports = mongoose.model('Cibo', postSchema);
