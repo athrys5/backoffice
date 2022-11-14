@@ -22,7 +22,6 @@ router.post('/deletepet', async (req,res) =>{
 router.post('/modifypet', async(req, res) => {
     try{
         const filter = {email: req.body.email2 , name: req.body.name2}
-        console.log(filter)
         const options = { upsert: false };
         const updateDoc = {
             $set: {
@@ -35,7 +34,6 @@ router.post('/modifypet', async(req, res) => {
                 age: req.body.age
             },
         };
-        console.log(updateDoc)
         await Animals.updateMany(filter, updateDoc, options)
         res.redirect('/myanimals')
       }catch{

@@ -38,6 +38,98 @@
             </form>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <% for(var i = 0; i < data.length; i++) {%>
+            <div class="card col-3">
+                <p>
+                    <i class="fa-solid fa-circle-xmark myBtn"></i>
+                  </p>
+              <p>
+                <%= " Name: " + data[i].name %>
+              </p>
+              <p>
+                <%= " City: " + data[i].city %>
+              </p>
+              <p>
+                <% for(var j = 0; j < data[i].services.length; j++) {%>
+                <%= " Services: " + data[i].services[j]%>
+                <% } %>
+              </p>
+              <p>
+                <% if(data[i].resDog !== undefined) {%>
+                    <% for(var j = 0; j < data[i].resDog.length; j++) {%>
+                        <%= " DogSitter " %>
+                        <% var o = j+1 %>
+                        <%= o + ":" + data[i].resDog[j]%>
+                        <% for(var k = 0; k < data[i].resDog[j].length; k++) {%>
+                            <%= " Date: " + data[i].resDog[j][k].date%>
+                            <%= " Id: " + data[i].resDog[j][k].id%>
+                        <% } %>
+                    <% } %>
+                <% } %>
+              </p>
+              <p>
+                <% if(data[i].resVet !== undefined) {%>
+                    <% for(var j = 0; j < data[i].resVet.length; j++) {%>
+                        <%= " Veterinarian " %>
+                        <% var h = j+1 %>
+                        <%= h + ":" + data[i].resVet[j]%>
+                        <% for(var k = 0; k < data[i].resVet[j].length; k++) {%>
+                            <%= " Date: " + data[i].resVet[j][k].date%>
+                            <%= " Id: " + data[i].resVet[j][k].id%>
+                        <% } %>
+                    <% } %>
+                <% } %>
+              </p>
+              <p>
+                <% if(data[i].VetInfo !== undefined) {%>
+                <%= "Vet Info (maxheight): " + data[i].VetInfo.maxheight %>
+                <%= "Vet Info (maxlength): " + data[i].VetInfo.maxlength %>
+                <% } %>
+              </p>
+              <p>
+                <i class="fa-solid fa-pencil myDesc"></i>
+              </p>
+              <p>
+                <i class="fa-solid fa-plus myAdd"></i>
+              </p>
+            <div class="modal myModal">
+                <form action="" method="POST" class="myForm" autocomplete="off">
+                    <div class="modal-content">
+                        <div class="divdelete">
+                            <span>Do you want to delete the following Site?</span>
+                            <input type="text" name="name1" id="name1" class="form-control deletetext" value="<%= data[i].name %>" readonly>
+                        </div>
+                        <div class="modifydiv">
+                        <span>Do you want to modify the following Site?</span>
+                            <input type="text" name="name2" id="name2" class="form-control deletetext" value="<%= data[i].name %>">
+                            <input type="text" name="city2" id="city2" class="form-control deletetext" value="<%= data[i].city %>">
+                            <% if(data[i].VetInfo !== undefined) {%>
+                                <input type="text" name="maxheight" id="maxheight" class="form-control deletetext" value="<%= data[i].VetInfo.maxheight %>">
+                                <input type="text" name="maxlength" id="maxlength" class="form-control deletetext" value="<%= data[i].VetInfo.maxlength %>">
+                            <% } %>
+                        </div>
+                        <div>
+                            <span>What do you want to add to this Site?</span>
+                            <input type="text" name="name3" id="name3" class="form-control deletetext" value="<%= data[i].name %>" readonly>
+                            <% if(data[i].VetInfo == undefined) {%>
+                                <input type="number" class="form-control" id="maxheight2" name="maxheight2" min="1" value="1">
+                                <input type="number" class="form-control" id="maxlength2" name="maxlength2" min="1" value="1">
+                            <% } %>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-primary close">Close</button>
+                        <button type="submit" class="btn btn-danger deletebutton" id="delete">Delete</button>
+                        <button type="submit" class="btn btn-warning modifybutton" id="modify">Modify</button>
+                        <button type="submit" class="btn btn-success add1" id="add1">Add Dog Sitter</button>
+                        <button type="submit" class="btn btn-success add2" id="add2">Add Vet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>  
+        <% } %>
+    </div>
 </div>
 
 
