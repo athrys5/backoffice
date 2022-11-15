@@ -1,5 +1,9 @@
-const smth = document.getElementById("name")
-$('#demo').datetimepicker({
-    // options here
-  });
-console.log(smth)
+window.onload = function() {
+  if (window.jQuery) {  
+      // jQuery is loaded  
+      alert("Yeah!");
+  } else {
+      // jQuery is not loaded
+      alert("Doesn't Work");
+  }
+}

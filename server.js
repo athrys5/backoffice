@@ -13,6 +13,7 @@ const servicesRouter = require('./routes/services')
 const bookRouter = require('./routes/book')
 const path = require('path')
 InitiateMongoServer()
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/fa', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/css')));
