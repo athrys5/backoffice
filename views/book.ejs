@@ -30,11 +30,15 @@
                         <% for(var j = 0; j < data[i].resDog.length; j++) {%>
                             <%= " DogSitter " %>
                             <% var o = j+1 %>
-                            <%= o + ":" + data[i].resDog[j]%>
+                            <%= o %>
+                            <% var dogBook = [] %>
                             <% for(var k = 0; k < data[i].resDog[j].length; k++) {%>
+                                <%= dogBook.push(data[i].resDog[j][k].date) %>
+                                
                                 <%= " Date: " + data[i].resDog[j][k].date%>
                                 <%= " Id: " + data[i].resDog[j][k].id%>
                             <% } %>
+                            <div id="datatest" data-test=<%= dogBook %>></div>
                         <% } %>
                     <% } %>
                 </p>
@@ -43,7 +47,7 @@
                     <% for(var j = 0; j < data[i].resVet.length; j++) {%>
                         <%= " Veterinarian " %>
                         <% var h = j+1 %>
-                        <%= h + ":" + data[i].resVet[j]%>
+                        <%= h %>
                         <% for(var k = 0; k < data[i].resVet[j].length; k++) {%>
                             <%= " Date: " + data[i].resVet[j][k].date%>
                             <%= " Id: " + data[i].resVet[j][k].id%>
@@ -60,12 +64,85 @@
             </div>  
         <% } %>
     </div>
-    <div class="row justify-content-center">
-        <input type="text" id="datepicker"/>
+    <div class="row justify-content-center row2">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" id="showDogSitter">Dog Sitter's Bookings</button>
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" id="showVet">Veterinarian's Bookings</button>
+        </div>
     </div>
+    <form action = "/book" method = "POST">
+        <div>
+            <select class="form-select" name="numResDog" id="numResDog">
+            <% if(data[0].resDog !== undefined) {%>
+                <% for(var j = 0; j < data[0].resDog.length; j++) {%>
+                    <% var num = j+1 %>
+                    <option value="<%= num %>"><%= "DogSitter " + num  %></option>
+                <% } %>
+            <% } %>
+            </select>
+        </div>
+        <input type="text" class="form-control" name="site" id="site" value="<%= data[0].name %>" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="form-group col-3">
+                <div class="input-group date" id="datepicker"> 
+                    <input type="text" class="form-control" name="booking" id="booking">
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-primary">Book</button>
+            </div>
+        </div>
+    </form>
+    
 </div>
 
-<script type="text/javascript" src="js/book.js"></script>
+<script>
+    const sel = document.getElementById('numResDog')
+    var disHour = []
+
+    sel.addEventListener('change',  (event) => {
+        var selIndex = sel.options[sel.selectedIndex].value;
+    })
+    var test = document.getElementById('datatest').dataset.test
+    test = test.split(',')
+
+    for(let h = 0; h < test.length; h++){
+        test[h] = new Date(test[h])
+    }
+    console.log(test)
+
+    
+    $('#datepicker').datetimepicker({
+        icons: {
+            up: 'fa fa-angle-up',
+            down: 'fa fa-angle-down',
+            time: 'fa fa-clock',
+            date: 'fa fa-calendar',
+        },
+        daysOfWeekDisabled: [0, 6],
+        minDate: new Date(),
+        disabledTimeIntervals: [moment().hour(20), moment().hour(7)], //set disabled intervals 8- 19
+        disabledHours: [],
+        stepping: 60,
+        format: 'DD-MMM-yyyy , h:mm a',
+    }).on("dp.change", function(){
+        disHour = []
+        const booking = new Date( document.getElementById('booking').value)
+        for(let h = 0; h < test.length; h++){
+            if(test[h].getDate() == booking.getDate() && test[h].getMonth() == booking.getMonth() && test[h].getFullYear() == booking.getFullYear()){
+                disHour.push(test[h].getHours())
+            }
+        }
+        $('#datepicker').data("DateTimePicker").disabledHours(disHour);
+    })
+</script>
+
+
+
+
 
 
 

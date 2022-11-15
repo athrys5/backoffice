@@ -3,3 +3,30 @@
     margin-top: 60px;
 }
 
+.row{
+    position: relative;
+}
+
+.row2{
+    text-align: center;
+}
+
+.row2 .col-12{
+    margin-top: 12px;
+}
+
+#showDogSitter{
+    width: 50%;
+}
+
+#showVet{
+    width: 50%;
+}
+
+.input-group-addon{
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
+    background-color: rgb(230, 230, 230);
+    padding: 8px;
+}
+

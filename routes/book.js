@@ -16,11 +16,27 @@ router.get('/book', async (req, res) =>{
 router.post('/selectname', async (req, res) => {
     try {
         const result = await Book.find({ name: req.body.name })
-        console.log(result)
         res.render('book.ejs', { data: result })
     } catch (error) {
         
     }
+})
+
+router.post('/book', async (req, res) => {
+    try {
+        const newdate = new Date(req.body.booking)
+        const filter = { name: req.body.site }
+        const options = { upsert: false }
+        const updateDoc = {
+            $push: {
+                [`resDog.${req.body.numResDog - 1}`]: {'date': newdate.toISOString(), 'id': 'ciao@gmail.com'},
+            }
+        }
+        await Book.updateMany(filter, updateDoc, options);
+        res.redirect('/book')
+    } catch (error) {
+        
+    } 
 })
 
 module.exports = router
