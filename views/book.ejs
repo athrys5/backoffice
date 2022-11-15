@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="css/book.css">
+<link rel="stylesheet" href="jquery.datetimepicker.css"/>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <form action="/selectname" method="POST">
+            <select class="form-select" id="name" name="name">
+                <% for(var i = 0; i < data.length; i++) {%>
+                    <option value="<%= data[i].name %>"><%= data[i].name %></option>
+                <% } %>
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <% for(var i = 0; i < data.length; i++) {%>
+            <div class="card col-3">
+                <p>
+                    <%= " Name: " + data[i].name %>
+                </p>
+                <p>
+                    <%= " City: " + data[i].city %>
+                </p>
+                <p>
+                    <% for(var j = 0; j < data[i].services.length; j++) {%>
+                        <%= " Services: " + data[i].services[j]%>
+                    <% } %>
+                </p>
+                <p>
+                    <% if(data[i].resDog !== undefined) {%>
+                        <% for(var j = 0; j < data[i].resDog.length; j++) {%>
+                            <%= " DogSitter " %>
+                            <% var o = j+1 %>
+                            <%= o + ":" + data[i].resDog[j]%>
+                            <% for(var k = 0; k < data[i].resDog[j].length; k++) {%>
+                                <%= " Date: " + data[i].resDog[j][k].date%>
+                                <%= " Id: " + data[i].resDog[j][k].id%>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </p>
+                <p>
+                <% if(data[i].resVet !== undefined) {%>
+                    <% for(var j = 0; j < data[i].resVet.length; j++) {%>
+                        <%= " Veterinarian " %>
+                        <% var h = j+1 %>
+                        <%= h + ":" + data[i].resVet[j]%>
+                        <% for(var k = 0; k < data[i].resVet[j].length; k++) {%>
+                            <%= " Date: " + data[i].resVet[j][k].date%>
+                            <%= " Id: " + data[i].resVet[j][k].id%>
+                        <% } %>
+                    <% } %>
+                <% } %>
+                </p>
+                <p>
+                <% if(data[i].VetInfo !== undefined) {%>
+                    <%= "Vet Info (maxheight): " + data[i].VetInfo.maxheight %>
+                    <%= "Vet Info (maxlength): " + data[i].VetInfo.maxlength %>
+                <% } %>
+                </p> 
+            </div>  
+        <% } %>
+    </div>
+    <div class="row justify-content-center">
+        <input type="text" id="demo"/>
+    </div>
+</div>
+<script src="/jquery.js"></script>
+<script src="/path/to/cdn/jquery.min.js"></script>
+<script src="jquery.datetimepicker.js"></script>
+
+
+

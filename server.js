@@ -10,9 +10,12 @@ const customerRouter = require('./routes/customers')
 const animalsRouter = require('./routes/myanimals')
 const leaderboardRouter = require('./routes/leaderboard')
 const servicesRouter = require('./routes/services')
+const bookRouter = require('./routes/book')
 const path = require('path')
 InitiateMongoServer()
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
+app.use('/css', express.static(path.join(__dirname, 'node_modules/jquery-datetimepicker/jquery.datetimepicker.css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/fa', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/css')));
 app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts')));
@@ -31,5 +34,6 @@ app.use('/', customerRouter)
 app.use('/', animalsRouter)
 app.use('/', leaderboardRouter)
 app.use('/', servicesRouter)
+app.use('/', bookRouter)
 
 app.listen(8080)
