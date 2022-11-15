@@ -16,6 +16,8 @@ InitiateMongoServer()
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap4-datetimepicker/build/css/')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap4-datetimepicker/build/js/')));
 app.use('/fa', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/css')));
 app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts')));
 app.use(express.static('public')); // js & css

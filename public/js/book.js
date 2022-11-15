@@ -7,3 +7,5 @@ window.onload = function() {
       alert("Doesn't Work");
   }
 }
+
+$('#datetimepicker').datetimepicker()
