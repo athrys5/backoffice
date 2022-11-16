@@ -30,3 +30,14 @@
     padding: 8px;
 }
 
+#dogManage{
+    display: none;
+}
+
+#vetManage{
+    display: none;
+}
+
+.hide{
+    display: none;
+}

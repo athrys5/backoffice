@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <form action="/selectname" method="POST">
+        <form action="/book" method="POST">
             <select class="form-select" id="name" name="name">
                 <% for(var i = 0; i < data.length; i++) {%>
                     <option value="<%= data[i].name %>"><%= data[i].name %></option>
@@ -27,32 +27,35 @@
                 </p>
                 <p>
                     <% if(data[i].resDog !== undefined) {%>
+                        <% var dogBook = [] %>
                         <% for(var j = 0; j < data[i].resDog.length; j++) {%>
                             <%= " DogSitter " %>
                             <% var o = j+1 %>
                             <%= o %>
-                            <% var dogBook = [] %>
+                            <% if(j !== data[i].resDog.length - 1 && j !== 0){ dogBook.push('/') }%>
                             <% for(var k = 0; k < data[i].resDog[j].length; k++) {%>
-                                <%= dogBook.push(data[i].resDog[j][k].date) %>
-                                
+                                <% dogBook.push(data[i].resDog[j][k].date) %>
                                 <%= " Date: " + data[i].resDog[j][k].date%>
                                 <%= " Id: " + data[i].resDog[j][k].id%>
                             <% } %>
-                            <div id="datatest" data-test=<%= dogBook %>></div>
                         <% } %>
+                        <div id="datatest" data-test=<%= dogBook %>></div>
                     <% } %>
                 </p>
                 <p>
                 <% if(data[i].resVet !== undefined) {%>
+                    <% var vetBook = [] %>
                     <% for(var j = 0; j < data[i].resVet.length; j++) {%>
                         <%= " Veterinarian " %>
                         <% var h = j+1 %>
                         <%= h %>
                         <% for(var k = 0; k < data[i].resVet[j].length; k++) {%>
+                            <% vetBook.push(data[i].resVet[j][k].date) %>
                             <%= " Date: " + data[i].resVet[j][k].date%>
                             <%= " Id: " + data[i].resVet[j][k].id%>
                         <% } %>
                     <% } %>
+                    <div id="datatest2" data-test=<%= vetBook %>></div>
                 <% } %>
                 </p>
                 <p>
@@ -72,49 +75,137 @@
             <button type="button" class="btn btn-primary" id="showVet">Veterinarian's Bookings</button>
         </div>
     </div>
-    <form action = "/book" method = "POST">
-        <div>
-            <select class="form-select" name="numResDog" id="numResDog">
-            <% if(data[0].resDog !== undefined) {%>
-                <% for(var j = 0; j < data[0].resDog.length; j++) {%>
-                    <% var num = j+1 %>
-                    <option value="<%= num %>"><%= "DogSitter " + num  %></option>
+    <div class="row justify-content-center dogManage" id="dogManage">
+        <form action = "/booking" method = "POST">
+            <div>
+                <select class="form-select" name="numResDog" id="numResDog">
+                    <option disabled selected value> Select an Option </option>
+                <% if(data[0].resDog !== undefined) {%>
+                    <% for(var j = 0; j < data[0].resDog.length; j++) {%>
+                        <% var num = j+1 %>
+                        <option value="<%= num %>"><%= "DogSitter " + num  %></option>
+                    <% } %>
                 <% } %>
-            <% } %>
-            </select>
-        </div>
-        <input type="text" class="form-control" name="site" id="site" value="<%= data[0].name %>" style="display: none;">
-        <div class="row justify-content-center">
-            <div class="form-group col-3">
-                <div class="input-group date" id="datepicker"> 
-                    <input type="text" class="form-control" name="booking" id="booking">
-                    <span class="input-group-addon">
-                        <span class="fa fa-calendar"></span>
-                    </span>
-                </div>
-                <button type="submit" class="btn btn-primary">Book</button>
+                </select>
             </div>
+            <div class="hide">
+                <div>
+                    <select class="form-select" name="usere" id="usere">
+                    <% for(var j = 0; j < account.length; j++) {%>
+                        <option><%= account[j].email %></option>
+                    <% } %>
+                    </select>
+                </div>
+                <input type="text" class="form-control" name="site" id="site" value="<%= data[0].name %>" style="display: none;">
+                <div class="row justify-content-center">
+                    <div class="form-group col-3">
+                        <div class="input-group date" id="datepicker"> 
+                            <input type="text" class="form-control" name="booking" id="booking">
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Book</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="hide">
+            <form action="/deletebooking" method="POST">
+                <div>
+                    <select class="form-select" name="deletedate" id="deletedate">
+                        <% if(data[0].resDog !== undefined) {%>
+                            <% for(var i = 0; i < data[0].resDog.length ; i++) {%>
+                                <% if(data[0].resDog[i].length !== 0){ %>
+                                    <% for(var j = 0; j < data[0].resDog[i].length ; j++) {%>
+                                        <% var num = i + 1 %>
+                                        <option><%= data[0].resDog[i][j].id + ", " + data[0].resDog[i][j].date + ", " + num%></option>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    </select>
+                    <input type="text" class="form-control" name="sitedel" id="sitedel" value="<%= data[0].name %>" style="display: none;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
         </div>
-    </form>
-    
+    </div>
+    <div class="row justify-content-center vetManage" id="vetManage">
+        <form action = "/bookingvet" method = "POST">
+            <div>
+                <select class="form-select" name="numResVet" id="numResVet">
+                <% if(data[0].resVet !== undefined) {%>
+                    <% for(var j = 0; j < data[0].resVet.length; j++) {%>
+                        <% var num = j+1 %>
+                        <option value="<%= num %>"><%= "Veterinarian " + num  %></option>
+                    <% } %>
+                <% } %>
+                </select>
+            </div>
+            <div>
+                <select class="form-select" name="userv" id="userv">
+                <% for(var j = 0; j < account.length; j++) {%>
+                    <option><%= account[j].email %></option>
+                <% } %>
+                </select>
+            </div>
+            <input type="text" class="form-control" name="sitev" id="sitev" value="<%= data[0].name %>" style="display: none;">
+            <div class="row justify-content-center">
+                <div class="form-group col-3">
+                    <div class="input-group date" id="datepickervet"> 
+                        <input type="text" class="form-control" name="bookingv" id="bookingv">
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Book</button>
+                </div>
+            </div>
+        </form>
+        <form action="/deletebookingvet" method="POST">
+            <div>
+                <select class="form-select" name="deletedatev" id="deletedatev">
+                    <% if(data[0].resVet !== undefined) {%>
+                        <% for(var i = 0; i < data[0].resVet.length ; i++) {%>
+                            <% if(data[0].resVet[i].length !== 0){ %>
+                                <% for(var j = 0; j < data[0].resVet[i].length ; j++) {%>
+                                    <% var num = i + 1 %>
+                                    <option><%= data[0].resVet[i][j].id + ", " + data[0].resVet[i][j].date + ", " + num%></option>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                </select>
+                <input type="text" class="form-control" name="sitedelv" id="sitedelv" value="<%= data[0].name %>" style="display: none;">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script>
-    const sel = document.getElementById('numResDog')
     var disHour = []
-
-    sel.addEventListener('change',  (event) => {
-        var selIndex = sel.options[sel.selectedIndex].value;
-    })
+    const sel = document.getElementById('numResDog')
     var test = document.getElementById('datatest').dataset.test
-    test = test.split(',')
+    var test2 = document.getElementById('datatest2').dataset.test
+    var testsplit = test.split(',/,')
+    var finaltest = []
 
-    for(let h = 0; h < test.length; h++){
-        test[h] = new Date(test[h])
+    for(var i = 0; i < testsplit.length ; i++){
+        finaltest.push(testsplit[i].split(','))
     }
-    console.log(test)
 
-    
+    for(var i = 0; i < finaltest.length; i++){
+        for(var j = 0; j < finaltest[i].length; j++){
+            finaltest[i][j] = new Date(finaltest[i][j])
+        }
+    }
+
+   /* sel.addEventListener('change',  (event) => {
+        var selIndex = sel.options[sel.selectedIndex].value;
+    }) */
+
     $('#datepicker').datetimepicker({
         icons: {
             up: 'fa fa-angle-up',
@@ -123,20 +214,47 @@
             date: 'fa fa-calendar',
         },
         daysOfWeekDisabled: [0, 6],
-        minDate: new Date(),
-        disabledTimeIntervals: [moment().hour(20), moment().hour(7)], //set disabled intervals 8- 19
+        minDate: new Date(), 
+        disabledHours: [],
+        stepping: 60,
+        format: 'DD-MMM-yyyy , h:mm a',
+    }).on("dp.change", function(){
+        var selIndex = sel.options[sel.selectedIndex].value - 1
+        disHour = []
+        if(finaltest[selIndex] !== undefined){
+            const booking = new Date( document.getElementById('booking').value)
+            for(let h = 0; h < finaltest[selIndex].length; h++){
+                if(finaltest[selIndex][h].getDate() == booking.getDate() && finaltest[selIndex][h].getMonth() == booking.getMonth() && finaltest[selIndex][h].getFullYear() == booking.getFullYear()){
+                    disHour.push(finaltest[selIndex][h].getHours())
+                }
+            }
+        }
+        disHour.push(0, 1, 2, 3, 4, 5, 6, 7, 20, 21, 22, 23, 24)
+        $('#datepicker').data("DateTimePicker").disabledHours(disHour);
+    })
+ 
+    $('#datepickervet').datetimepicker({
+        icons: {
+            up: 'fa fa-angle-up',
+            down: 'fa fa-angle-down',
+            time: 'fa fa-clock',
+            date: 'fa fa-calendar',
+        },
+        daysOfWeekDisabled: [0, 6],
+        minDate: new Date(), 
         disabledHours: [],
         stepping: 60,
         format: 'DD-MMM-yyyy , h:mm a',
     }).on("dp.change", function(){
         disHour = []
-        const booking = new Date( document.getElementById('booking').value)
-        for(let h = 0; h < test.length; h++){
-            if(test[h].getDate() == booking.getDate() && test[h].getMonth() == booking.getMonth() && test[h].getFullYear() == booking.getFullYear()){
-                disHour.push(test[h].getHours())
+        const booking = new Date( document.getElementById('bookingv').value)
+        for(let h = 0; h < test2.length; h++){
+            if(test2[h].getDate() == booking.getDate() && test2[h].getMonth() == booking.getMonth() && test2[h].getFullYear() == booking.getFullYear()){
+                disHour.push(test2[h].getHours())
             }
         }
-        $('#datepicker').data("DateTimePicker").disabledHours(disHour);
+        disHour.push(0, 1, 2, 3, 4, 5, 6, 7, 20, 21, 22, 23, 24)
+        $('#datepickervet').data("DateTimePicker").disabledHours(disHour);
     })
 </script>
 
