@@ -32,7 +32,7 @@
                             <%= " DogSitter " %>
                             <% var o = j+1 %>
                             <%= o %>
-                            <% if(j !== data[i].resDog.length - 1 && j !== 0){ dogBook.push('/') }%>
+                            <% if(data[i].resDog[j].length !== 0 && j !== 0){ dogBook.push('/') }%>
                             <% for(var k = 0; k < data[i].resDog[j].length; k++) {%>
                                 <% dogBook.push(data[i].resDog[j][k].date) %>
                                 <%= " Date: " + data[i].resDog[j][k].date%>
@@ -49,6 +49,7 @@
                         <%= " Veterinarian " %>
                         <% var h = j+1 %>
                         <%= h %>
+                        <% if(data[i].resVet[j].length !== 0 && j !== 0){ vetBook.push('/') }%>
                         <% for(var k = 0; k < data[i].resVet[j].length; k++) {%>
                             <% vetBook.push(data[i].resVet[j][k].date) %>
                             <%= " Date: " + data[i].resVet[j][k].date%>
@@ -186,12 +187,16 @@
 
 <script>
     var disHour = []
+    var disHourVet = []
     const sel = document.getElementById('numResDog')
+    const selvet = document.getElementById('numResVet')
     var test = document.getElementById('datatest').dataset.test
     var test2 = document.getElementById('datatest2').dataset.test
+    var testsplit2 = test2.split(',/,')
     var testsplit = test.split(',/,')
     var finaltest = []
-
+    var ftestvet = []
+   
     for(var i = 0; i < testsplit.length ; i++){
         finaltest.push(testsplit[i].split(','))
     }
@@ -202,9 +207,22 @@
         }
     }
 
-   /* sel.addEventListener('change',  (event) => {
-        var selIndex = sel.options[sel.selectedIndex].value;
-    }) */
+    for(var i = 0; i < testsplit2.length ; i++){
+        ftestvet.push(testsplit2[i].split(','))
+    }
+
+    for(var i = 0; i < ftestvet.length; i++){
+        for(var j = 0; j < ftestvet[i].length; j++){
+            ftestvet[i][j] = new Date(ftestvet[i][j])
+        }
+    }
+    sel.addEventListener('change',  (event) => {
+        document.getElementById('booking').value = ''
+    }) 
+
+    selvet.addEventListener('change',  (event) => {
+        document.getElementById('bookingv').value = ''
+    }) 
 
     $('#datepicker').datetimepicker({
         icons: {
@@ -246,15 +264,18 @@
         stepping: 60,
         format: 'DD-MMM-yyyy , h:mm a',
     }).on("dp.change", function(){
-        disHour = []
+        var selIndex = selvet.options[selvet.selectedIndex].value - 1
+        disHourVet = []
         const booking = new Date( document.getElementById('bookingv').value)
-        for(let h = 0; h < test2.length; h++){
-            if(test2[h].getDate() == booking.getDate() && test2[h].getMonth() == booking.getMonth() && test2[h].getFullYear() == booking.getFullYear()){
-                disHour.push(test2[h].getHours())
+        if(ftestvet[selIndex] !== undefined){
+            for(let h = 0; h < ftestvet[selIndex].length; h++){
+                if(ftestvet[selIndex][h].getDate() == booking.getDate() && ftestvet[selIndex][h].getMonth() == booking.getMonth() && ftestvet[selIndex][h].getFullYear() == booking.getFullYear()){
+                    disHourVet.push(ftestvet[selIndex][h].getHours())
+                }
             }
         }
-        disHour.push(0, 1, 2, 3, 4, 5, 6, 7, 20, 21, 22, 23, 24)
-        $('#datepickervet').data("DateTimePicker").disabledHours(disHour);
+        disHourVet.push(0, 1, 2, 3, 4, 5, 6, 7, 20, 21, 22, 23, 24)
+        $('#datepickervet').data("DateTimePicker").disabledHours(disHourVet);
     })
 </script>
 

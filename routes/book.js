@@ -35,7 +35,6 @@ router.post('/booking', async (req, res) => {
                 [`resDog.${req.body.numResDog - 1}`]: {'date': newdate.toISOString(), 'id': req.body.usere},
             }
         }
-        console.log(filter, options, updateDoc)
         await Book.updateMany(filter, updateDoc, options);
         res.redirect('/book')
     } catch (error) {
@@ -54,7 +53,6 @@ router.post('/deletebooking', async (req, res) => {
                 [`resDog.${fields[2]}`]: {'date': fields[1], 'id': fields[0]},
             }
         }
-        console.log(filter, updateDoc, options)
         await Book.updateMany(filter, updateDoc, options)
         res.redirect('/book')
     } catch (error) {
@@ -72,7 +70,6 @@ router.post('/bookingvet', async (req, res) => {
                 [`resVet.${req.body.numResVet - 1}`]: {'date': newdate.toISOString(), 'id': req.body.userv},
             }
         }
-        console.log(filter, options, updateDoc)
         await Book.updateMany(filter, updateDoc, options);
         res.redirect('/book')
     } catch (error) {
@@ -91,7 +88,6 @@ router.post('/deletebookingvet', async (req, res) => {
                 [`resVet.${fields[2]}`]: {'date': fields[1], 'id': fields[0]},
             }
         }
-        console.log(filter, updateDoc, options)
         await Book.updateMany(filter, updateDoc, options)
         res.redirect('/book')
     } catch (error) {
